@@ -1,4 +1,3 @@
-
 This could become a cool QR ticketing application based on Meteor and Phonegap.
 
 
@@ -9,5 +8,5 @@ https://github.com/phonegap/phonegap-plugins/blob/master/iPhone/BarcodeScanner/R
 
 ## HTML5
 
-http://badassjs.com/post/654334959/barcode-scanning-in-javascript
-https://gist.github.com/tobeytailor/421369
+* [blog post](http://badassjs.com/post/654334959/barcode-scanning-in-javascript)
+* [gist](https://gist.github.com/tobeytailor/421369)

@@ -1,7 +1,65 @@
 <head>
-  <title>qrticketing</title>
+  <title>QR ticketing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  {{> list}}
+ {{> page}}
 </body>
+
+<template name="page">
+  {{#if error}}
+     <div class="alert alert-error">{{error}}</div>
+  {{/if}}
+  {{#if showDetails}}
+    {{> details}}
+  {{else}}
+  	{{> prompt}}
+  {{/if}}
+</template>
+
+<template name="prompt">
+      {{#if error}}
+        <div class="alert alert-error">{{error}}</div>
+      {{/if}}
+	<div class="search-form">
+      <label>Ticket ID</label>
+      <input type="text" class="id span5" value="{{currentSearch}}">
+	</div>
+	{{> buttons}}
+    <div class="btn btn-secondary">
+      <a href="#" class="search">Search</a>
+    </div>
+</template>
+
+<template name="buttons">
+	<div class="btn btn-primary">
+		<a href="#" class="scan">Scan ticket</a>
+	</div>
+</template>
+
+<template name="details">
+	{{#if ticket}}
+		{{#with ticket}}
+			<h1>Ticket Details:</h1>
+			<ul>
+				<li>{{firstname}}</li>
+				<li>{{lastname}}</li>
+				<li>{{employer}}</li>
+				<li>{{location}}</li>
+			</ul>
+			{{#if checkedIn}}
+				<h2>Checked in!</h2>
+			{{else}}
+				<a href="#" class="btn btn-primary checkIn">Check in</a>
+			{{/if}}
+		{{/with}}
+		{{> buttons}}
+		<div class="btn btn-secondary">
+		   <a href="#" class="reset">Search</a>
+		</div>
+	{{else}}
+		<h1>Ticket not found.</h1>
+		{{> prompt}}
+	{{/if}}
+</template>

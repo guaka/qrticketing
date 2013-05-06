@@ -1,0 +1,7 @@
+# warning: this doesn't work anymore
+
+stdin = process.openStdin()
+stdin.setEncoding 'utf8'
+stdin.on 'data', (input) -> 
+  m = input.match /mongodb:\/\/(\w+):((\w+-)+\w+)@((\w+\.)+\w+):27017\/(\w+)/
+  console.log "-u #{m[1]} -h #{m[4]} -p #{m[2]} -d #{m[6]}"

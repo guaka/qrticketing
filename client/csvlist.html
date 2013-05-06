@@ -1,0 +1,12 @@
+
+<template name="csvlist">
+  <div id="csvlist" style="width:500px; height:200px">
+    {{#each tickets}}
+    "{{firstname}}",
+    "{{lastname}}",
+    "{{employer}}",
+    "{{location}}"
+    <br />
+    {{/each}}
+  </div>
+</template>

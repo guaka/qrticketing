@@ -121,3 +121,11 @@ var extractId = function (input) {
 		return field1[1];
 	}
 };
+
+
+Template.csvlist.tickets = function () {
+  if (location.hash === '#csvlist') {
+    return Tickets.find({}).fetch();
+  }
+}
+

@@ -1,13 +1,9 @@
-Tickets = new Meteor.Collection("tickets");
+this.Tickets = new Meteor.Collection("tickets");
 
 // inserting tickets is not allowed on the client side!
 Tickets.allow({
   insert: function (userId, party) {
-  if (Meteor.isClient) {
-    return false;
-   } else {
-   return true;
-   }
+    return !Meteor.isClient;
   }
 });
 

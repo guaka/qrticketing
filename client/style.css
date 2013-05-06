@@ -1,1 +1,37 @@
 /* CSS declarations go here */
+body {
+	font-size: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+label {
+	display: block;
+}
+input {
+	font-size: 20px;
+	width: 100%;
+}
+div.btn {
+	margin-top: 10px;
+}
+div.btn a {
+	display: block;
+	height: 2.5em;
+	padding-top: 0.75em;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+div.btn-checkin {
+	background-color: orange;
+}
+div.btn-primary {
+	background-color: green;
+}
+div.btn-secondary {
+	background-color: blue;
+}
+.warning {
+	color: red;
+}

@@ -11,11 +11,18 @@
   {{#if error}}
      <div class="alert alert-error">{{error}}</div>
   {{/if}}
+<!--  <p>ShowList: {{showList}} ShowDetail: {{showDetails}}</p> -->
+  
   {{#if showDetails}}
-    {{> details}}
+  	{{> details}}
   {{else}}
-  	{{> prompt}}
+  	 {{#if showList}}
+  		{{> listing}}
+	  {{else}}
+  		{{> prompt}}
+ 	 {{/if}}
   {{/if}}
+ 
 </template>
 
 <template name="prompt">
@@ -23,18 +30,21 @@
         <div class="alert alert-error">{{error}}</div>
       {{/if}}
 	<div class="search-form">
+	  <p class="help">Vul bij voorkeur achternaam en voornaam in, let op spelling!</p>
       <label>Ticket ID</label>
-      <input type="text" class="id span5" value="{{currentSearch}}">
+      <input type="text" class="id" value="">
+      <label>Voornaam</label>
+      <input type="text" class="firstname" value="">
+      <label>Achternaam</label>
+      <input type="text" class="lastname" value="">
+      <label>Werkgever</label>
+      <input type="text" class="employer" value="">
 	</div>
-	{{> buttons}}
-    <div class="btn btn-secondary">
-      <a href="#" class="search">Search</a>
-    </div>
-</template>
-
-<template name="buttons">
 	<div class="btn btn-primary">
 		<a href="#" class="scan">Scan ticket</a>
+	</div>
+    <div class="btn btn-secondary">
+		<a href="#" class="search">Zoeken</a>
 	</div>
 </template>
 
@@ -49,17 +59,37 @@
 				<li>{{location}}</li>
 			</ul>
 			{{#if checkedIn}}
-				<h2>Checked in!</h2>
+				<h2 class="warning">Checked in!</h2>
 			{{else}}
-				<a href="#" class="btn btn-primary checkIn">Check in</a>
+			<div class="btn btn-checkin">
+				<a href="#" class="checkIn">Check in</a>
+			</div>
 			{{/if}}
 		{{/with}}
-		{{> buttons}}
+		<div class="btn btn-primary">
+			<a href="#" class="scan">Scan ticket</a>
+		</div>
 		<div class="btn btn-secondary">
-		   <a href="#" class="reset">Search</a>
+			<a href="#" class="reset">Opnieuw zoeken</a>
 		</div>
 	{{else}}
 		<h1>Ticket not found.</h1>
 		{{> prompt}}
 	{{/if}}
+</template>
+
+<template name="listing">
+	<h1>Search results:</h1>
+	<ul>
+	{{#each searchResults}}
+		{{> selector}}
+	{{/each}}
+	</ul>
+	<div class="btn btn-secondary">
+		<a href="#" class="reset">Opnieuw zoeken</a>
+	</div>
+</template>
+
+<template name="selector">
+	<li><a href="#" class="ticket">{{firstname}} {{lastname}} ({{employer}})</a></li>
 </template>
